@@ -1,0 +1,95 @@
+.product {
+    display: flex;
+    flex-direction: column;
+    max-height: 400px;
+    max-width: fit-content;
+    min-width: 200px;
+    padding: calc(var(--gutter) * 2);;
+
+    font-family: var(--primaryFont);
+
+    background: white;
+
+    border-radius: var(--gutter);
+}
+
+.product__image {
+    display: flex;
+    justify-content: center;
+}
+
+.product__image img {
+    max-height: 200px;
+    margin-bottom: calc(var(--gutter) * 4);
+}
+
+.product__title {
+    font-size: 1rem;
+    margin-bottom: calc(var(--gutter) * 2);
+}
+
+/** PRICE  */
+.product__price {
+    font-size: 0.8rem;
+    margin-bottom: calc(var(--gutter) * 2);
+}
+
+/** QUANTITY SELECTOR */
+
+.product__quantitySelector {
+    width: max-content;
+    border: 1px solid var(--darkColor);
+    margin-bottom: calc(var(--gutter) * 2);
+    border-radius: calc(var(--gutter)/2);
+    overflow: hidden;
+
+}
+
+.product__quantitySelector button {
+    display: inline;
+    padding: calc(var(--gutter) * 1.5);
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    border: none;
+
+}
+
+.product__quantitySelector button:hover {
+    opacity: 0.9;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.product__quantitySelector button:active {
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.product__quantitySelector span {
+    padding: 0 calc(var(--gutter) * 1.5);
+}
+
+/** ADD TO CART BUTTON */
+.product__cta {
+    padding: calc(var(--gutter) * 2);
+
+    border: none;
+    border-radius: calc(var(--gutter)/2);
+    background: var(--secondaryColor);
+
+    color: var(--darkColor);
+    font-weight: bold;
+}
+
+.product__cta:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.product__cta:active {
+    opacity: 0.6;
+    transition: 0.3s;
+}

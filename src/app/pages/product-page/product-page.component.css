@@ -1,0 +1,42 @@
+.productPage {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding:  calc(var(--gutter) * 8) 5%;
+
+    font-family: var(--primaryFont);
+
+    border-radius: var(--gutter);
+}
+
+.product__image img {
+    max-height: 400px;
+    margin-bottom: calc(var(--gutter) * 4);
+}
+
+.product__title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: calc(var(--gutter) * 6);
+}
+
+/** DESCRIPTION  */
+.product__description {
+    margin-bottom: calc(var(--gutter) * 4);
+}
+
+/** PRICE  */
+.product__price {
+    margin-bottom: calc(var(--gutter) * 4);
+}
+
+/** QUANTITY SELECTOR */
+
+.product__quantitySelector {
+    margin-bottom: calc(var(--gutter) * 8);
+}
+
+/** ADD TO CART BUTTON */
+.product__cta {
+    width: 50%;
+}
+

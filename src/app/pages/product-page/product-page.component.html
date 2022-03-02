@@ -1,0 +1,21 @@
+<app-header></app-header>
+
+<div class="productPage container">
+    <div class="product__image">
+        <img src="{{product.url}}"
+            alt="product Image" />
+    </div>
+
+    <div>
+        <p class="product__title">{{product.name}}</p>
+        <p class="product__description">{{product.description}}</p>
+        <p class="product__price">${{product.price}}</p>
+
+        <div class="product__quantitySelector">
+            <button (click)="subtract()">-</button>
+            <span>{{amountInCart}}</span>
+            <button (click)="add()">+</button>
+        </div>
+        <button class="product__cta" (click)="addToCart()">Add to cart</button>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<app-header></app-header>
+
+<div class="cartPage">
+    <div class="cartPage__products">
+        <app-product *ngFor="let product of cart.products" [product]="product"></app-product>
+    </div>  
+    <div class="cartPage__form">
+        <label for="cartInput__fullName">Full name</label>
+        <input id="cartInput__fullName"/>
+        <label for="cartInput__address">Address</label>
+        <input id="cartInput__address"/>
+        <label for="cartInput__creditCard">Credit Card</label>
+        <input id="cartInput__creditCard"/>
+        <p class="cartPage__formInfo">We'll never share your payment details with anyone else</p>
+        <button>Submit</button>
+    </div>
+</div>
