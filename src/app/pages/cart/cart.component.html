@@ -1,17 +1,39 @@
 <app-header></app-header>
 
-<div class="cartPage">
+<div *ngIf="cart.products.length > 0" class="cartPage">
     <div class="cartPage__products">
         <app-product *ngFor="let product of cart.products" [product]="product"></app-product>
-    </div>  
-    <div class="cartPage__form">
-        <label for="cartInput__fullName">Full name</label>
-        <input id="cartInput__fullName"/>
-        <label for="cartInput__address">Address</label>
-        <input id="cartInput__address"/>
-        <label for="cartInput__creditCard">Credit Card</label>
-        <input id="cartInput__creditCard"/>
-        <p class="cartPage__formInfo">We'll never share your payment details with anyone else</p>
-        <button>Submit</button>
     </div>
+    <div  class="cartPage__form" >
+        <form #cartForm="ngForm" (ngSubmit)="submitForm()">
+            <label for="cartInput__fullName">Full name</label>
+            <input type="text" name="full name" placeholder="Type your full name" required 
+                id="cartInput__fullName" [(ngModel)]="localUser.fullName" #userFullname="ngModel"/>
+    
+            <label for="cartInput__address">Address</label>
+            <input minlength="10" type="text" name="address" required placeholder="Type your address" id="cartInput__address"
+                [(ngModel)]="localUser.address" />
+    
+            <label for="cartInput__creditCard">Credit Card Number</label>
+            <input minlength="16" type="number" name="credit card" required placeholder="Type your credit card" id="cartInput__creditCard"
+                [(ngModel)]="localUser.creditCard" />
+    
+            <p class="cartPage__formInfo">We'll never share your payment details with anyone else</p>
+            <button [disabled]="cartForm.invalid">Submit</button>
+        </form>
+    
+        <div *ngIf="userFullname.invalid && userFullname.dirty">
+            <div *ngIf="userFullname.errors?.['required']">
+                <p>Please provide a valid name</p>
+            </div>
+        </div>
+    </div>
+
+
 </div>
+
+<div *ngIf="cart.products.length === 0">
+    <h1>There are no items in your cart</h1>
+    <button routerLink="/">Check product list</button>
+</div>
+

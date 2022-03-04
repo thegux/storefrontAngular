@@ -1,7 +1,7 @@
 type UserModel = {
     fullName: string,
     address: string,
-    creditCard: number
+    creditCard: string
 }
 
 export default UserModel

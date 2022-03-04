@@ -29,9 +29,11 @@ export class ProductComponent implements OnInit {
   }
 
   subtract() {
-    if (this.amountInCart > 0) {
+    if (this.amountInCart > 1) {
       this.amountInCart -= 1;
       this.cartService.changeProductAmount(this.product.id, this.amountInCart);
+    } else if (this.amountInCart === 1) {
+      this.cartService.removeProductFromCart(this.product.id);
     }
   }
 
@@ -41,7 +43,13 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(): void {
-    this.cartService.addProductToCart(this.product, this.amountInCart);
+    if(this.amountInCart > 0) {
+      alert(`${this.product.name} was added to the cart`);
+      this.cartService.addProductToCart(this.product, this.amountInCart);
+    } else {
+      alert('You need to select the product amount first')
+    }
+ 
   }
 
 }

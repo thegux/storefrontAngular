@@ -14,21 +14,28 @@ export class CartComponent implements OnInit {
   cart: CartModel;
   localUser: UserModel;
 
+
   constructor(private cartService: CartService) {
     this.cart = {
-      user: [],
-      products: []
+      products: [],
     }
 
     this.localUser = {
       fullName: "",
-      creditCard: 0,
+      creditCard: "",
       address: ""
     }
   }
 
   ngOnInit(): void {
     this.cart = this.cartService.getCart()
+  }
+
+  submitForm():void {
+    const order = {
+      products: this.cart.products,
+      user: this.localUser
+    }
   }
 
   

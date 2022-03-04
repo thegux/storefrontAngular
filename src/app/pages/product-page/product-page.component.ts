@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import ProductModel from 'src/app/models/product';
 import { ProductService } from 'src/app/product.service';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/app/cart.service';
 
 @Component({
   selector: 'app-product-page',
@@ -13,7 +14,7 @@ export class ProductPageComponent implements OnInit {
   product:ProductModel;
   amountInCart:number = 0;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private route: ActivatedRoute, private cartService: CartService) {
     this.product = {
       id: 0,
       name: "",
@@ -30,17 +31,27 @@ export class ProductPageComponent implements OnInit {
   }
 
   subtract() {
-    if (this.amountInCart > 0) {
+    if (this.amountInCart > 1) {
       this.amountInCart -= 1;
+      this.cartService.changeProductAmount(this.product.id, this.amountInCart);
+    } else if (this.amountInCart === 1) {
+      this.cartService.removeProductFromCart(this.product.id);
     }
   }
 
   add(): void {
     this.amountInCart += 1;
+    this.cartService.changeProductAmount(this.product.id, this.amountInCart);
   }
 
   addToCart(): void {
-
+    if(this.amountInCart > 0) {
+      alert(`${this.product.name} was added to the cart`);
+      this.cartService.addProductToCart(this.product, this.amountInCart);
+    } else {
+      alert('You need to select the product amount first')
+    }
+ 
   }
 
 
