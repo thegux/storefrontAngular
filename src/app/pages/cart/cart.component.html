@@ -2,6 +2,7 @@
 
 <div *ngIf="cart.products.length > 0" class="cartPage">
     <div class="cartPage__products">
+        <h1>Cart Summary</h1>
         <app-cart-product *ngFor="let product of cart.products" [product]="product"></app-cart-product>
         <h2>Total: {{cart.total}}</h2>
     </div>
@@ -13,28 +14,53 @@
     
             <label for="cartInput__address">Address</label>
             <input minlength="10" type="text" name="address" required placeholder="Type your address" id="cartInput__address"
-                [(ngModel)]="localUser.address" />
+                [(ngModel)]="localUser.address" #userAddress="ngModel"/>
     
             <label for="cartInput__creditCard">Credit Card Number</label>
-            <input minlength="16" type="number" name="credit card" required placeholder="Type your credit card" id="cartInput__creditCard"
-                [(ngModel)]="localUser.creditCard" />
+            <input pattern="^[0-9]*" minlength="16" name="credit card" required placeholder="Type your credit card" id="cartInput__creditCard"
+                [(ngModel)]="localUser.creditCard" #userCreditCard="ngModel" />
     
             <p class="cartPage__formInfo">We'll never share your payment details with anyone else</p>
-            <button [disabled]="cartForm.invalid">Submit</button>
+            <button class="cartPage__submitButton" [disabled]="cartForm.invalid">Submit</button>
         </form>
     
         <div *ngIf="userFullname.invalid && userFullname.dirty">
             <div *ngIf="userFullname.errors?.['required']">
-                <p>Please provide a valid name</p>
+                <p class="errorMessage">Please type your name</p>
             </div>
         </div>
+
+        <div *ngIf="userAddress.invalid && userAddress.dirty">
+            <div *ngIf="userAddress.errors?.['required']">
+                <p class="errorMessage">Please type your address</p>
+            </div>
+            <div *ngIf="userAddress.errors?.['minlength']">
+                <p class="errorMessage">Please provide a valid address. It should have a minimum of 10 characters</p>
+            </div>
+        </div>
+
+        <div *ngIf="userCreditCard.invalid && userCreditCard.dirty">
+            <div *ngIf="userCreditCard.errors?.['required']">
+                <p class="errorMessage">Please type your credit card number</p>
+            </div>
+            <div *ngIf="userCreditCard.errors?.['minlength']">
+                <p class="errorMessage">Please provide a valid credit card number. It should have a minimum of 16 characters</p>
+            </div>
+            <div *ngIf="userCreditCard.errors?.['pattern']">
+                <p class="errorMessage">Please provide a valid credit card number. It should have only numbers</p>
+            </div>
+        </div>
+
     </div>
 
 
 </div>
 
-<div *ngIf="cart.products.length === 0">
-    <h1>There are no items in your cart</h1>
-    <button routerLink="/">Check product list</button>
+<div *ngIf="cart.products.length === 0" class="cartPage">
+    <div>
+        <h1>There are no items in your cart</h1>
+        <button routerLink="/">Check product list</button>
+    </div>
+
 </div>
 

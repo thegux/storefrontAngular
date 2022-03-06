@@ -1,8 +1,14 @@
 .cartPage {
     display: flex;
+    flex-wrap: wrap;
     padding:  calc(var(--gutter) * 8) 5%;
+    row-gap: calc(var(--gutter) * 8);
 
     font-family: var(--primaryFont);
+}
+
+.cartPage h1 {
+    margin-bottom: calc(var(--gutter) * 8);
 }
 
 .cartPage__form label {
@@ -47,7 +53,14 @@
     font-size: 1rem;
 }
 
-/** ADD TO CART BUTTON */
-.cartPage__products .product__cta {
-    width: 100%;
+.cartPage__submitButton {
+    background-color: var(--accentColor);
+    color: white;
+}
+
+
+.cartPage .errorMessage  {
+    font-size: 0.5rem;
+    color: red;
+    margin-top: calc(var(--gutter) * 4);
 }

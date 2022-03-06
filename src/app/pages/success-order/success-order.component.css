@@ -1,0 +1,8 @@
+.successOrderPage {
+    padding:  calc(var(--gutter) * 4) 5%;
+    font-family: var(--primaryFont);
+}
+
+.successOrderPage h1 {
+    margin-bottom: calc(var(--gutter) * 4);
+}
