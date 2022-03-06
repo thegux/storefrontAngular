@@ -7,7 +7,7 @@ It was developed as an assessment for the Fullstack JavaScript Nanodegree Course
 
 In order to run the project, you should:
 
-1. Make sure you have node and ng cli installed
+1. Make sure you have node and the Angular CLI installed (if not, download node from nodejs.org and then install the Angular CLI using ```npm install -g @angular/cli``` in your cmd 
 2. Open your cmd and navigate to the project's directory
 3. Install all the dependencies:
 ```
