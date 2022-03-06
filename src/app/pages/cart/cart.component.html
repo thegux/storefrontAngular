@@ -2,7 +2,8 @@
 
 <div *ngIf="cart.products.length > 0" class="cartPage">
     <div class="cartPage__products">
-        <app-product *ngFor="let product of cart.products" [product]="product"></app-product>
+        <app-cart-product *ngFor="let product of cart.products" [product]="product"></app-cart-product>
+        <h2>Total: {{cart.total}}</h2>
     </div>
     <div  class="cartPage__form" >
         <form #cartForm="ngForm" (ngSubmit)="submitForm()">

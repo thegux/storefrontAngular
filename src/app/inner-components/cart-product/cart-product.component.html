@@ -1,0 +1,17 @@
+<div class="product">
+    <a routerLink="/product/{{product.id}}" class="product__image">
+        <img src="{{product.url}}"
+            alt="Product Image" />
+    </a>
+    <div class="product__info">
+        <strong class="product__title">{{product.name}}</strong>
+        <p class="product__price">${{product.price}}</p>
+    
+        <div class="product__quantitySelector">
+            <button (click)="subtract()">-</button>
+            <span>{{amountInCart}}</span>
+            <button (click)="add()">+</button>
+        </div>
+    </div>
+
+</div>

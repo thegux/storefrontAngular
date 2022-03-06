@@ -1,7 +1,8 @@
-import ProductModel from "./product";
+import {CartProductModel} from "./product";
 
 type CartModel = {
-    products: ProductModel[],
+    products: CartProductModel[],
+    total: number
 }
 
 export default CartModel

@@ -4,8 +4,12 @@ interface ProductModel {
     price: number,
     url: string,
     description: string
-    amountInCart?: number,
+ 
+}
 
+export interface CartProductModel extends ProductModel {
+    amountInCart?: number,
+    indexInCart: number,
 }
 
 

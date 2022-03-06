@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { CartService } from 'src/app/cart.service';
+import { CartService } from '../../services/cart/cart.service';
 import ProductModel from 'src/app/models/product';
 
 @Component({
@@ -8,6 +8,8 @@ import ProductModel from 'src/app/models/product';
   styleUrls: ['./product.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
+
+
 export class ProductComponent implements OnInit {
   @Input() product: ProductModel;
   amountInCart:number = 0;
@@ -22,24 +24,16 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    if(this.product.amountInCart) {
-      this.amountInCart = this.product.amountInCart;
-    }
-  }
+  ngOnInit(): void {}
 
   subtract() {
     if (this.amountInCart > 1) {
       this.amountInCart -= 1;
-      this.cartService.changeProductAmount(this.product.id, this.amountInCart);
-    } else if (this.amountInCart === 1) {
-      this.cartService.removeProductFromCart(this.product.id);
-    }
+    } 
   }
 
   add(): void {
     this.amountInCart += 1;
-    this.cartService.changeProductAmount(this.product.id, this.amountInCart);
   }
 
   addToCart(): void {
@@ -49,7 +43,6 @@ export class ProductComponent implements OnInit {
     } else {
       alert('You need to select the product amount first')
     }
- 
   }
 
 }

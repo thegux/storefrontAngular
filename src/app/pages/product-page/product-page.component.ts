@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import ProductModel from 'src/app/models/product';
-import { ProductService } from 'src/app/product.service';
+import { ProductService } from 'src/app/services/product/product.service';
 import { ActivatedRoute } from '@angular/router';
-import { CartService } from 'src/app/cart.service';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-product-page',

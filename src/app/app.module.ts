@@ -7,6 +7,7 @@ import { InnerComponentsModule } from './inner-components/inner-components.modul
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SuccessOrderComponent } from './pages/success-order/success-order.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ProductPageComponent,
     CartComponent,
+    SuccessOrderComponent,
   ],
   imports: [
     BrowserModule,
