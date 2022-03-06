@@ -6,24 +6,24 @@
         <app-cart-product *ngFor="let product of cart.products" [product]="product"></app-cart-product>
         <h2>Total: {{cart.total}}</h2>
     </div>
-    <div  class="cartPage__form" >
+    <div class="cartPage__form">
         <form #cartForm="ngForm" (ngSubmit)="submitForm()">
             <label for="cartInput__fullName">Full name</label>
-            <input type="text" name="full name" placeholder="Type your full name" required 
-                id="cartInput__fullName" [(ngModel)]="localUser.fullName" #userFullname="ngModel"/>
-    
+            <input type="text" name="full name" placeholder="Type your full name" required id="cartInput__fullName"
+                [(ngModel)]="localUser.fullName" #userFullname="ngModel" />
+
             <label for="cartInput__address">Address</label>
-            <input minlength="10" type="text" name="address" required placeholder="Type your address" id="cartInput__address"
-                [(ngModel)]="localUser.address" #userAddress="ngModel"/>
-    
+            <input minlength="10" type="text" name="address" required placeholder="Type your address"
+                id="cartInput__address" [(ngModel)]="localUser.address" #userAddress="ngModel" />
+
             <label for="cartInput__creditCard">Credit Card Number</label>
-            <input pattern="^[0-9]*" minlength="16" name="credit card" required placeholder="Type your credit card" id="cartInput__creditCard"
-                [(ngModel)]="localUser.creditCard" #userCreditCard="ngModel" />
-    
+            <input pattern="^[0-9]*" minlength="16" name="credit card" required placeholder="Type your credit card"
+                id="cartInput__creditCard" [(ngModel)]="localUser.creditCard" #userCreditCard="ngModel" />
+
             <p class="cartPage__formInfo">We'll never share your payment details with anyone else</p>
             <button class="cartPage__submitButton" [disabled]="cartForm.invalid">Submit</button>
         </form>
-    
+
         <div *ngIf="userFullname.invalid && userFullname.dirty">
             <div *ngIf="userFullname.errors?.['required']">
                 <p class="errorMessage">Please type your name</p>
@@ -44,7 +44,8 @@
                 <p class="errorMessage">Please type your credit card number</p>
             </div>
             <div *ngIf="userCreditCard.errors?.['minlength']">
-                <p class="errorMessage">Please provide a valid credit card number. It should have a minimum of 16 characters</p>
+                <p class="errorMessage">Please provide a valid credit card number. It should have a minimum of 16
+                    characters</p>
             </div>
             <div *ngIf="userCreditCard.errors?.['pattern']">
                 <p class="errorMessage">Please provide a valid credit card number. It should have only numbers</p>
@@ -63,4 +64,3 @@
     </div>
 
 </div>
-

@@ -8,11 +8,11 @@ import { CartProductComponent } from './cart-product/cart-product.component';
 
 
 @NgModule({
-  declarations: [HeaderComponent, ProductComponent, ProductListComponent, CartProductComponent],
-  exports: [HeaderComponent, ProductComponent, ProductListComponent, CartProductComponent],
-  imports: [
-    CommonModule,
-    RouterModule
-  ]
+    declarations: [HeaderComponent, ProductComponent, ProductListComponent, CartProductComponent],
+    exports: [HeaderComponent, ProductComponent, ProductListComponent, CartProductComponent],
+    imports: [
+        CommonModule,
+        RouterModule
+    ]
 })
 export class InnerComponentsModule { }
