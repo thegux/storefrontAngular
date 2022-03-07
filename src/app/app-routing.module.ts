@@ -12,7 +12,8 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'product/:id', component: ProductPageComponent},
   {path: 'cart', component: CartComponent},
-  {path: 'success/:user/:orderNumber', component: SuccessOrderComponent}
+  {path: 'success/:user/:orderNumber', component: SuccessOrderComponent},
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
