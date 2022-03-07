@@ -1,27 +1,38 @@
-# Storefront
+# Storefront 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+The frontend for this project was developed using Angular. It is a storefront project that simulates a virtual e-commerce website.
+It was developed as an assessment for the Fullstack JavaScript Nanodegree Course by Udacity. 
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+In order to run the project, you should:
 
-## Code scaffolding
+1. Make sure you have node and the Angular CLI installed (if not, download node from nodejs.org and then install the Angular CLI using ```npm install -g @angular/cli``` in your cmd 
+2. Open your cmd and navigate to the project's directory
+3. Install all the dependencies:
+```
+npm install .
+```
+4. Run the App Locally:
+```
+ng serve
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Project structure
 
-## Build
+This project contains a simple architecture, with the following directories:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### Services
+Containing angular services that simulate API calls.
 
-## Running unit tests
+#### Models
+Containing typescript interfaces to model the data used in the application.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Inner Components
+Containing components that can be used throughout different pages, e.g. (app-product-list component can be used at the home page, or [if implemented] at a category page).
 
-## Running end-to-end tests
+#### Pages
+Containing major components that are mapped to routes.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+#### Assets
+Containing dummy data to be used at API request simulations
