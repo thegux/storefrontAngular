@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import UserModel from 'src/app/models/user';
 import CartModel from '../../models/cart';
-import ProductModel, { CartProductModel } from '../../models/product';
+import ProductModel, { CartProductModel, PreCartProductModel } from '../../models/product';
 
 @Injectable({
 	providedIn: 'root'
@@ -17,15 +17,14 @@ export class CartService {
 	}
 
 	getCart() {
-		console.log(this.cart)
 		return this.cart;
 	}
 
-	addProductToCart(product: ProductModel, amountInCart: number) {
+	addProductToCart(product: PreCartProductModel) {
 		const indexInCart = this.cart.products.length;
-		const cartProduct: CartProductModel = { ...product, amountInCart: amountInCart, indexInCart: indexInCart }
+		const cartProduct: CartProductModel = { ...product, indexInCart: indexInCart }
 		this.cart.products = this.cart.products.concat(cartProduct);
-		this.cart.total += product.price * amountInCart;
+		this.cart.total += product.price * product.amountInCart;
 	}
 
 	removeProductFromCart(indexInCart: number) {
@@ -50,12 +49,12 @@ export class CartService {
 			status: 200,
 			cart: this.cart.products,
 			orderNumber: Math.floor(Math.random() * 1000000)
-		}
+		};
 
 		//clear cart 
 		this.cart = { products: [], total: 0 };
 
-		return res
+		return res;
 	}
 
 }

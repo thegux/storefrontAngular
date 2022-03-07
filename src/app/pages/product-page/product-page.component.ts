@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import ProductModel from 'src/app/models/product';
+import ProductModel, {PreCartProductModel} from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../services/cart/cart.service';
@@ -35,21 +35,21 @@ export class ProductPageComponent implements OnInit {
     subtract() {
         if (this.amountInCart > 1) {
             this.amountInCart -= 1;
-            this.cartService.changeProductAmount(this.product.id, this.amountInCart);
-        } else if (this.amountInCart === 1) {
-            this.cartService.removeProductFromCart(this.product.id);
         }
     }
 
     add(): void {
         this.amountInCart += 1;
-        this.cartService.changeProductAmount(this.product.id, this.amountInCart);
     }
 
     addToCart(): void {
         if (this.amountInCart > 0) {
+            const cartProduct:PreCartProductModel  = {
+                ...this.product,
+                amountInCart: this.amountInCart
+            };
             alert(`${this.product.name} was added to the cart`);
-            this.cartService.addProductToCart(this.product, this.amountInCart);
+            this.cartService.addProductToCart(cartProduct);
         } else {
             alert('You need to select the product amount first')
         }

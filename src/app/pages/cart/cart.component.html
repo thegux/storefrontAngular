@@ -17,8 +17,8 @@
                 id="cartInput__address" [(ngModel)]="localUser.address" #userAddress="ngModel" />
 
             <label for="cartInput__creditCard">Credit Card Number</label>
-            <input pattern="^[0-9]*" minlength="16" name="credit card" required placeholder="Type your credit card"
-                id="cartInput__creditCard" [(ngModel)]="localUser.creditCard" #userCreditCard="ngModel" />
+            <input pattern="^[0-9.]*" minlength="19" maxlength="19" name="credit card" required placeholder="****.****.****.****"
+                id="cartInput__creditCard" [(ngModel)]="localUser.creditCard" #userCreditCard="ngModel" (ngModelChange)="formatCreditCard($event)" />
 
             <p class="cartPage__formInfo">We'll never share your payment details with anyone else</p>
             <button class="cartPage__submitButton" [disabled]="cartForm.invalid">Submit</button>
@@ -44,11 +44,11 @@
                 <p class="errorMessage">Please type your credit card number</p>
             </div>
             <div *ngIf="userCreditCard.errors?.['minlength']">
-                <p class="errorMessage">Please provide a valid credit card number. It should have a minimum of 16
-                    characters</p>
+                <p class="errorMessage">Please provide a valid credit card number. It should have 19
+                    characters, including numbers and dots</p>
             </div>
             <div *ngIf="userCreditCard.errors?.['pattern']">
-                <p class="errorMessage">Please provide a valid credit card number. It should have only numbers</p>
+                <p class="errorMessage">Please provide a valid credit card number. It should have only numbers and dots</p>
             </div>
         </div>
 

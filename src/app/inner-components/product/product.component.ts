@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { CartService } from '../../services/cart/cart.service';
-import ProductModel from 'src/app/models/product';
+import { Component, Input, OnInit, ViewEncapsulation,Output, EventEmitter } from '@angular/core';
+import ProductModel, { PreCartProductModel } from 'src/app/models/product';
 
 @Component({
     selector: 'app-product',
@@ -13,8 +12,9 @@ import ProductModel from 'src/app/models/product';
 export class ProductComponent implements OnInit {
     @Input() product: ProductModel;
     amountInCart: number = 0;
+    @Output() sendToCart:EventEmitter<PreCartProductModel>= new EventEmitter;
 
-    constructor(private cartService: CartService) {
+    constructor() {
         this.product = {
             id: 0,
             name: "",
@@ -36,13 +36,20 @@ export class ProductComponent implements OnInit {
         this.amountInCart += 1;
     }
 
-    addToCart(): void {
+    addToCart():void {
         if (this.amountInCart > 0) {
-            alert(`${this.product.name} was added to the cart`);
-            this.cartService.addProductToCart(this.product, this.amountInCart);
+            const cartProduct:PreCartProductModel  = {
+                ...this.product,
+                amountInCart: this.amountInCart
+            };
+            this.sendToCart.emit(cartProduct);
+
         } else {
-            alert('You need to select the product amount first')
+            alert('You need to select the product amount first');
         }
     }
 
+
+
 }
+

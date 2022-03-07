@@ -7,9 +7,13 @@ interface ProductModel {
  
 }
 
+export interface PreCartProductModel extends ProductModel {
+    amountInCart: number
+}
+
 export interface CartProductModel extends ProductModel {
     amountInCart?: number,
-    indexInCart: number,
+    indexInCart: number
 }
 
 
